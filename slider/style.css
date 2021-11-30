@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+}
+
+.container{
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+img{
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#previous, #next{
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: calc(50% - 25px);
+    left: 30px;
+    cursor: pointer;
+    z-index: 90;
+}
+
+#next{
+    left: unset;
+    right: 30px;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+            display: flex;
+        }
+        li{
+            margin-left: 10px;
+        }
+        .active{
+            border: 1px solid red;
+            padding: 3px;
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li class="item active" data="home">Home</li>
+        <li class="item" data="sobre">Sobre</li>
+        <li class="item" data="contatos">Contatos</li>
+    </ul>
+
+    <div id="serviceText"><p>Service test</p></div>
+    <div id="sobreText"><p>Sobre test</p></div>
+    <div id="contactText"><p>Contact test</p></div>
+    
+    <script>
+        const items = Array.from(document.querySelectorAll('.item'))
+        const serviceText = document.getElementById('serviceText')
+        const sobreText = document.getElementById('sobreText')
+        const contactText = document.getElementById('contactText')
+        hideOrShowTextDiv('home')
+
+        items.forEach(item => {
+            item.addEventListener('click', addClass)
+        })
+        
+        function addClass(event){
+            const selectAttribute = event.target.getAttribute('data')
+            addOrRemoveActive(selectAttribute)
+            hideOrShowTextDiv(selectAttribute)
+        }
+
+        function addOrRemoveActive(selectAttribute){
+            items.forEach(item => {
+                const itemAttribute = item.getAttribute('data')
+                if(itemAttribute === selectAttribute){
+                    item.classList.add('active')
+                    return;
+                }
+
+                item.classList.remove('active')
+            })
+        }
+
+        function hideText(){
+            serviceText.style.display = 'none'
+            sobreText.style.display = 'none'
+            contactText.style.display = 'none'
+        }
+
+        function hideOrShowTextDiv(selectAttribute){
+            hideText()
+            if(selectAttribute === 'home'){
+                serviceText.style.display = 'block'
+            }
+            if(selectAttribute === 'sobre'){
+                sobreText.style.display = 'block'
+            }
+            if(selectAttribute === 'contatos'){
+                contactText.style.display = 'block'
+            }
+        }
+    </script>
+</body>
+</html>
